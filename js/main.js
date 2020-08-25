@@ -57,8 +57,8 @@ function init() {
             let index = event.target.id.split("-")
             let ques = index[1]
             let ans = index[2]
-            console.log(ques, ans)
-            console.log("answer", questions[i].answer)
+            console.log("question no: ",ques,"You choose:", ans)
+            console.log("correct answer:", questions[i].answer)
             if (ans==questions[i].answer){
                 console.log("congratue")
                 let correct = document.getElementsByClassName("answers")[ans];
@@ -84,14 +84,9 @@ function init() {
     
     function nextquestion(e){
         container.innerHTML = ""
-        console.log(e)
         i++;
         init()
     }
 }
 
 init()
-
-
-
-
