@@ -58,6 +58,15 @@ function init() {
             let index = event.target.id.split("-")
             let ques = index[1]
             let ans = index[2]
+
+            // let answers = document.getElementsByClassName("answers")
+            // for (let n = 0; n < 3; n++) {
+            //     if (n != ans){
+            //         answers[n].setAttribute("disabled", true)   
+            //     }
+
+
+
             console.log("question no: ",ques,"You choose:", ans)
             console.log("correct answer:", questions[i].answer)
             if (ans==questions[i].answer){
