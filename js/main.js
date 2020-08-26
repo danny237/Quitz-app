@@ -13,6 +13,7 @@ function Question(question, options, answer) {
 }
 
 var i = 0
+var SCORES = 0 
 
 function init() {
     let container = document.getElementsByClassName('container')[0];
@@ -60,6 +61,8 @@ function init() {
             console.log("question no: ",ques,"You choose:", ans)
             console.log("correct answer:", questions[i].answer)
             if (ans==questions[i].answer){
+                SCORES += 5;
+                console.log("you have: ", SCORES, "points")
                 console.log("congratue")
                 let correct = document.getElementsByClassName("answers")[ans];
                 correct.style.background = "#87CEEB"
@@ -74,19 +77,46 @@ function init() {
 
     }
 
-    let button = document.createElement("button");
+    if (i < 4){
+        let button = document.createElement("button");
     
-    button.setAttribute("class", "btn")
-    button.textContent = "Next"
-    container.appendChild(button)
+        button.setAttribute("class", "btn")
+        button.textContent = "Next"
+        container.appendChild(button)
     
-    button.onclick = nextquestion
+        button.onclick = nextQuestion
+    }else{
+        let button = document.createElement("button");
     
-    function nextquestion(e){
+        button.setAttribute("class", "btn")
+        button.textContent = "Show Scores"
+        container.appendChild(button)
+        button.onclick = showScores
+    }
+    
+    function nextQuestion(e){
         container.innerHTML = ""
         i++;
         init()
     }
+
+    function showScores(){
+        let container = document.getElementsByClassName('container')[0];
+        container.innerHTML = ""
+        let h2 = document.createElement("h2");
+        h2.textContent = "Your score is: "
+        h2.textContent += SCORES
+        container.appendChild(h2)
+
+        let button = document.createElement("button");
+        button.setAttribute("class", "btn")
+        let a = document.createElement("a")
+        a.setAttribute("href", "./game.html")
+        a.innerHTML = "Play Again"
+        button.appendChild(a)
+        container.appendChild(button)
+    }
+
 }
 
 init()
